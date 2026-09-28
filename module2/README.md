@@ -1,8 +1,8 @@
-# Module 2: the tooling layer, and what agents reach into
+# Module 2: The tooling layer
 
 45 minutes. Builds the capability pillar.
 
-## Your IDP is already the tooling layer
+## Mapping your IDP to the tooling layer
 
 The systems in this repo are the ones you already run: source control, CI,
 telemetry, a knowledge base. CI/CD, resources, scanners and dashboards carry
@@ -11,7 +11,7 @@ agent anywhere.
 
 What is new is the governed interface an agent reaches it with.
 
-## The tool is the system. The capability is the grant.
+## Systems, operations, and grants
 
 ```
    LAYER 1 TOOLING                    CAPABILITY PILLAR
@@ -37,7 +37,7 @@ Capability is broader than "Layer 1 with an API". Skills and procedures, MCP
 servers wrapping internal APIs, and agent-to-agent calls are all capability
 grants, and none of them is a Layer 1 system.
 
-## The gateway is the doorway
+## The tool gateway
 
 ```
    without a gateway                  with a gateway
@@ -59,7 +59,7 @@ There is a second gateway later in the course. This one governs what an agent
 can **do**. The model gateway in Module 5 governs what it can **think with**.
 Same pattern, different subject.
 
-## Fewer tools beat more
+## Tool count and selection accuracy
 
 This is measured, not a preference. Llama 3.1 8B fails a function-calling
 benchmark at 46 tools and passes the same set at 19 (arXiv:2411.15399). That

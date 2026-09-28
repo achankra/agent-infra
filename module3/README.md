@@ -1,11 +1,11 @@
-# Module 3: governance, who acts, what is allowed, what is recorded
+# Module 3: Governance
 
 45 minutes. Builds identity, agent security and agent observability.
 
 Governance is defined by being built once and enforced everywhere, so it is
 taught once, in one module, rather than split across the course.
 
-## Agents are principals, not borrowed logins
+## Workload identity for agents
 
 Own credential, own scope, own budget.
 
@@ -24,7 +24,7 @@ An agent acting for a person gets no more than that person holds. Run the
 runner with `--acts-for intern@acme.internal` and watch the entitlement set
 shrink.
 
-## The permission surface: three tiers, not a binary switch
+## Classifying operations into tiers
 
 Three bands: safe, where the agent decides and executes; moderate, where a
 human approves and the agent executes; dangerous, where a human decides. The
@@ -51,7 +51,7 @@ is, the agent can talk its way into a lower tier and the gate is no longer a
 gate. Reference implementations enforce policy in sub-milliseconds, which is a
 bar inference cannot meet.
 
-## The gate expands for agents: same engine, new surface
+## Extending the policy gate to agents
 
 Two of the three checks already exist in your IDP. Say so out loud, because an
 audience that thinks it is being taught policy-as-code in 2026 stops listening.
@@ -81,7 +81,7 @@ ordinary egress rule right up until an agent inherits a zone it should not have.
    execute
 ```
 
-## Everything is recorded against an identity
+## The audit ledger
 
 Every action and every platform decision, attributable. Cost attributed per
 path, per user and per team.

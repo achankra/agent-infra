@@ -1,8 +1,8 @@
-# Module 7: the full path build
+# Module 7: The Full-Path Build
 
 45 minutes. The capstone. No new pillar. One path, every pillar, in order.
 
-## Firing order
+## Pillar firing order
 
 The order is not documented publicly, because harness orchestration is
 proprietary at every major vendor. Derive it from necessity instead.
@@ -56,7 +56,7 @@ postmortem, because the failure is the inability to attribute.
 | execution | the loop does not stop |
 | evaluation | everything promotes |
 
-## Read-only first
+## Choosing the first control mode
 
 `/pr-review` is the lowest-risk way into production, and the pattern is live in
 production products in 2026. It reads, it comments, it cannot merge. Start

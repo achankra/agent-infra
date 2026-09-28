@@ -1,4 +1,4 @@
-# Module 4: context, what the agent knows
+# Module 4: Context
 
 45 minutes. Builds the context pillar.
 
@@ -22,7 +22,7 @@ Memory is separate again, and it comes in tiers: episodic, semantic,
 procedural. Procedural memory is learned tool-use and workflow patterns, and it
 is the one most curricula leave out.
 
-## The window is not memory
+## The context window, memory, and compaction
 
 The context window exists per turn.
 
@@ -50,7 +50,7 @@ Compaction runs before the window degrades, not after. A summary written after
 rot has set in is itself degraded, because the model producing it is already
 impaired. The trigger point is the design decision.
 
-## Governed sources only
+## Certified sources and data contracts
 
 Certified, contracted, owned. A data contract carries schema, quality rules,
 semantic definitions, an SLA and an owner, and it is a gating prerequisite for

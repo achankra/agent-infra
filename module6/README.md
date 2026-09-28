@@ -1,8 +1,8 @@
-# Module 6: evaluation, whether the output ships
+# Module 6: Evaluation
 
 45 minutes. Builds the evaluation pillar.
 
-## Two mechanisms, one decision
+## Gates and the judge
 
 ```
    artifact
@@ -24,7 +24,7 @@
 
 Deterministic gates decide. The judge scores and routes.
 
-## The judge cannot be the gate
+## Judge reliability
 
 This is the load-bearing claim of the module, and it rests on two studies
 rather than one. A 2026 evaluation across 21 judges, 9 providers and roughly
@@ -40,7 +40,7 @@ Rubrics and golden sets narrow the gap. They do not close it.
 So a low score routes to a human. It never hard-fails the loop. That is a
 design decision, not a limitation you work around later.
 
-## The definition of done, written down
+## Codifying the definition of done
 
 Gates are the codified definition of done. If a criterion cannot be expressed
 as a command with an exit code, it belongs in the rubric instead, and it routes

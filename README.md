@@ -105,16 +105,16 @@ tells you the answer.
 
 ## Modules
 
-| Module | Pillar built | Config you edit |
-|---|---|---|
-| 1 | none, this is the map | `module1/pillars.yaml`, read `budget-policy.yaml` |
-| 2 | capability | `tool-registry.yaml`, `entitlement-map.yaml`, `mcp-gateway.tf` |
-| 3 | identity, security, observability | `spiffe-ids.yaml`, `permission-tiers.yaml`, `otel-collector.yaml` |
-| 4 | context | `rag-config.toml`, `data-contracts/` |
-| 5 | execution, models | `orchestrator.yaml`, `sandbox.tf`, `runtime-pool.tf`, `providers.yaml`, `model-routes.toml` |
-| 6 | evaluation | `gates.yaml`, `eval-rubrics/`, `promotion-rules.yaml` |
-| 7 | capstone, all of them | a new path across every file |
-| 8 | the substrate beyond software | `workload-manifests/` |
+| Module | Title | Pillar built | Config you edit |
+|---|---|---|---|
+| 1 | The substrate that runs paths | none, this is the map | `module1/pillars.yaml`, read `budget-policy.yaml` |
+| 2 | The tooling layer | capability | `tool-registry.yaml`, `entitlement-map.yaml`, `mcp-gateway.tf` |
+| 3 | Governance | identity, security, observability | `spiffe-ids.yaml`, `permission-tiers.yaml`, `otel-collector.yaml` |
+| 4 | Context | context | `rag-config.toml`, `data-contracts/` |
+| 5 | Execution and Models | execution, models | `orchestrator.yaml`, `sandbox.tf`, `runtime-pool.tf`, `providers.yaml`, `model-routes.toml` |
+| 6 | Evaluation | evaluation | `gates.yaml`, `eval-rubrics/`, `promotion-rules.yaml` |
+| 7 | The Full-Path Build | capstone, all of them | a new path across every file |
+| 8 | The Future of Platform Engineering | the substrate beyond software | `workload-manifests/` |
 
 ## Layout
 

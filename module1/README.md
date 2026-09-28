@@ -1,9 +1,9 @@
-# Module 1: the substrate that runs paths
+# Module 1: The substrate that runs paths
 
 45 minutes. No pillar is built here. This module is the map, and the one
 decision the rest of the course depends on: who owns which parameter.
 
-## The claim
+## Throughput, reliability, and the harness
 
 Throughput and reliability come from the platform, not the model. Run one
 model over one task set on two harnesses and the number moves: Claude Sonnet
@@ -24,7 +24,7 @@ Ten pillars, three blocks.
                                  evaluation
 ```
 
-## Governance you inherit, the harness you declare
+## Separating governance from harness
 
 A new path inherits identity, policy and audit without asking. It must declare
 its own context, tools, limits and definition of done.
@@ -63,7 +63,7 @@ component exists.
    The iteration ceiling sits under the cost cap.
 ```
 
-## Blast radius decides who approves
+## Blast radius and approval authority
 
 ```
    change a governance control        change a harness parameter

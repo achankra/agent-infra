@@ -1,11 +1,11 @@
-# Module 5: execution and models, where agents run
+# Module 5: Execution and Models
 
 45 minutes. Builds the execution pillar and the three models pillars.
 
 Course 2 covered the ReAct loop and the hybrid path. This is where it runs, and
 what bounds it.
 
-## One workspace per run
+## Ephemeral workspaces
 
 ```
    dispatch
@@ -26,7 +26,7 @@ infrastructure is most of an agent execution substrate already.
 Orchestration walks the graph, sequences steps, holds state and retries.
 Checkpointed state means a crash resumes instead of restarting.
 
-## Every loop needs three ways to stop
+## Bounding the loop
 
 ```
    iteration cap      the loop has run enough times
@@ -84,7 +84,7 @@ Three decisions, and only one of them is a component you build.
                   decided by data class, latency, cost   a policy you encode
 ```
 
-Pinning is not a detail. Models are silently updated and deprecated, and
+Pin the version. Models are silently updated and deprecated, and
 unpinned versions make gate results incomparable across runs. This repo refuses
 to load a model spec without a pinned version.
 
@@ -92,7 +92,7 @@ Approved on what terms means approved on evidence from your own paths, not on a
 public leaderboard. Module 6 builds the rubric and golden sets that produce
 that evidence.
 
-## Run it, and watch it burn
+## Run it
 
 The repo ships with all three stops unset.
 

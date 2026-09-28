@@ -1,8 +1,8 @@
-# Module 8: the future of platform engineering
+# Module 8: The Future of Platform Engineering
 
 45 minutes. No new pillar. The same substrate, pointed somewhere else.
 
-## The mandate expands
+## Agent workloads beyond software delivery
 
 ```
    /pr-review          /reconcile-ledger      /campaign-brief     /offer-letter
@@ -21,7 +21,7 @@ Platform engineers own the substrate. Domain teams own the workflows. That
 division is the assumption behind the published agent adoption maturity models,
 and it is why this is staged rather than a big-bang rollout.
 
-## The claim is a prescription, not a description
+## The status of this claim
 
 Be straight about this in the room. Agents do span functions today, but through
 separate platforms: the major vendor offerings for IT, HR, finance, legal and
@@ -31,7 +31,7 @@ pillars is undocumented.
 So the argument for one substrate is market fragmentation, not existing
 practice. You are proposing the thing, not reporting it.
 
-## The proof point
+## The measured comparison
 
 Same model, same task set, two harnesses: Claude Sonnet 4.5 scores 68% under
 SWE-Agent and 34% under HAL Generalist (arXiv:2605.23950).
