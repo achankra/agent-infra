@@ -1,6 +1,7 @@
 # Module 5: Execution and Models
 
-45 minutes. Builds the execution pillar and the three models pillars.
+This module runs for 45 minutes and builds the execution pillar along with
+the three pillars that make up models.
 
 Course 2 covered the ReAct loop and the hybrid path. This is where it runs, and
 what bounds it.

@@ -1,6 +1,6 @@
 # Module 2: The tooling layer
 
-45 minutes. Builds the capability pillar.
+This module runs for 45 minutes and builds the capability pillar.
 
 ## Mapping your IDP to the tooling layer
 
@@ -57,7 +57,7 @@ vendor subscription.
 
 There is a second gateway later in the course. This one governs what an agent
 can **do**. The model gateway in Module 5 governs what it can **think with**.
-Same pattern, different subject.
+It is the same pattern with a different subject.
 
 ## Tool count and selection accuracy
 
@@ -67,13 +67,13 @@ is a small model, so read it as the shape rather than the threshold: for
 frontier models the overlap onset is nearer 30, and vendors have converged on
 caps of 40 to 50.
 
-Two causes. Every tool definition sits in the context window at 300 to 600
+There are two causes. Every tool definition sits in the context window at 300 to 600
 tokens each, spent before any work happens. GitHub's MCP server alone is about
 26,000 tokens for 35 tools. And more options mean more chances
 to pick the wrong one.
 
 So handing an agent everything available makes it worse, not more capable.
-Curation is a platform decision. Left to the path author, the answer is always
+Curation is therefore a platform decision. Left to the path author, the answer is always
 "all of them".
 
 ## Run it

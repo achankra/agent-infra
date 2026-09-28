@@ -1,6 +1,6 @@
 # Module 6: Evaluation
 
-45 minutes. Builds the evaluation pillar.
+This module runs for 45 minutes and builds the evaluation pillar.
 
 ## Gates and the judge
 
@@ -22,7 +22,8 @@
    high -> promote
 ```
 
-Deterministic gates decide. The judge scores and routes.
+Deterministic gates decide whether the artifact ships. The judge scores it and
+routes it.
 
 ## Judge reliability
 

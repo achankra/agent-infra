@@ -1,11 +1,12 @@
 # Module 7: The Full-Path Build
 
-45 minutes. The capstone. No new pillar. One path, every pillar, in order.
+This module runs for 45 minutes and is the capstone. It introduces no new
+pillar, and instead takes one path through every pillar already built.
 
 ## Pillar firing order
 
 The order is not documented publicly, because harness orchestration is
-proprietary at every major vendor. Derive it from necessity instead.
+proprietary at every major vendor. It is derived here from necessity instead.
 
 ```
    identity  ---> context ---> capability ---> model ---> evaluation

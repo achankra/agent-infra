@@ -1,7 +1,8 @@
 # Module 1: The substrate that runs paths
 
-45 minutes. No pillar is built here. This module is the map, and the one
-decision the rest of the course depends on: who owns which parameter.
+This module runs for 45 minutes and builds no pillar. It is the map of the
+ten pillars, and it settles the one decision the rest of the course depends
+on, which is who owns which parameter.
 
 ## Throughput, reliability, and the harness
 
@@ -11,7 +12,7 @@ model over one task set on two harnesses and the number moves: Claude Sonnet
 same tasks, 34 points. Across a benchmark set, harness variance measures about
 twice model variance (arXiv:2605.23950).
 
-Ten pillars, three blocks.
+The ten pillars fall into three blocks.
 
 ```
    GOVERNANCE                    HARNESS                      MODELS
@@ -39,7 +40,7 @@ That is testable in both directions.
         -> the harness is not per-path
 ```
 
-Both blocks are platform-built, once. One identity provider, one policy engine,
+Both blocks are built once, by the platform team. One identity provider, one policy engine,
 one audit ledger, and equally one orchestrator, one sandbox pool, one context
 assembler, one tool gateway, one eval runner. A new path does not get a new
 harness. It gets a manifest.

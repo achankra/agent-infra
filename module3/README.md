@@ -1,6 +1,7 @@
 # Module 3: Governance
 
-45 minutes. Builds identity, agent security and agent observability.
+This module runs for 45 minutes and builds three pillars: identity, agent
+security and agent observability.
 
 Governance is defined by being built once and enforced everywhere, so it is
 taught once, in one module, rather than split across the course.
@@ -106,7 +107,7 @@ The second command shows delegation narrowing the entitlement set.
 **Task 1.** Add a workload block for `/validate-change` in
 `config/spiffe-ids.yaml`.
 
-**Task 2.** Give it a TTL of 3600 seconds or less. One credential per task.
+**Task 2.** Give it a TTL of 3600 seconds or less. Each task gets its own credential.
 
 **Task 3.** Entitle it to trigger CI, and do not entitle it to merge. ADR 0007
 in `sample_app/docs/adr/` says agents do not merge; your config should make that

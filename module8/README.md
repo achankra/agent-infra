@@ -1,6 +1,7 @@
 # Module 8: The Future of Platform Engineering
 
-45 minutes. No new pillar. The same substrate, pointed somewhere else.
+This module runs for 45 minutes and introduces no new pillar. It points the
+same substrate at work that has nothing to do with software.
 
 ## Agent workloads beyond software delivery
 
@@ -17,7 +18,7 @@
    What changes between them is every parameter, and nothing else.
 ```
 
-Platform engineers own the substrate. Domain teams own the workflows. That
+Platform engineers own the substrate and domain teams own the workflows. That
 division is the assumption behind the published agent adoption maturity models,
 and it is why this is staged rather than a big-bang rollout.
 
@@ -43,7 +44,7 @@ run.
 
 ## What leadership asks for
 
-Two things.
+Leadership asks for two things.
 
 ```
    cost per workflow          what leadership asks for. The FinOps Foundation
@@ -70,12 +71,14 @@ same pillars.
 
 ## Your tasks
 
-Finance wants ledger reconciliation run by an agent. You are the platform team.
-They are the domain team. Your job is to hand them a manifest, not a project.
+Finance wants ledger reconciliation run by an agent. You are the platform team
+and they are the domain team, so your job is to hand them a manifest rather
+than to start a project of your own.
 
 Open `config/workload-manifests/finance-reconciliation.yaml`.
 
-**Task 1.** Name the domain owner. Not you.
+**Task 1.** Name the domain owner, which should be someone in finance rather
+than someone on the platform team.
 
 **Task 2.** Set a TTL of 3600 seconds or less. The rule does not change because
 the workload is finance.
@@ -93,15 +96,15 @@ default, and Module 5 taught you what happens to the routing when it is not.
 **Task 5.** Grant a control mode. Reconciliation that posts to a ledger is not
 assistive work, and it is not bounded autonomy on day one either.
 
-**Task 6.** Bound the loop. Iteration cap and cost budget. Every loop needs a
-way to stop, whatever the domain.
+**Task 6.** Bound the loop with an iteration cap and a cost budget, because
+every loop needs a way to stop whatever the domain it serves.
 
 **Task 7.** Define done, and route a low score to a person. Reconciliation has
-a crisp deterministic gate available to it: the ledger balances or it does not.
-Say so.
+a crisp deterministic gate available to it, since the ledger either balances or
+it does not, so write that down as the definition of done.
 
-**Task 8.** Set a cost per workflow target. This is the number leadership asks
-for.
+**Task 8.** Set a cost per workflow target, because that is the figure
+leadership will ask you for when it reviews the spend.
 
 **Task 9.** Confirm you did not need a fourth permission tier. If a finance
 workload forced one, your tier map was software-specific and the reuse claim
@@ -116,7 +119,7 @@ python3 module8/run.py
 
 ## Discussion
 
-Two questions worth the last ten minutes.
+Two questions are worth the last ten minutes of the session.
 
 Which of the nine fields were finance-specific, and which were the
 same decisions you made for `/pr-review` with different values? That ratio is

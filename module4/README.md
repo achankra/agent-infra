@@ -1,13 +1,13 @@
 # Module 4: Context
 
-45 minutes. Builds the context pillar.
+This module runs for 45 minutes and builds the context pillar.
 
 ## Explicit and implicit
 
 Context is what you hand the agent, and what it assumes because you did not.
 Every gap is filled by a guess.
 
-Two categories, two retrieval methods.
+Context splits into two categories, each with its own retrieval method.
 
 ```
    KNOWLEDGE                          LIVE SYSTEMS
@@ -52,7 +52,7 @@ impaired. The trigger point is the design decision.
 
 ## Certified sources and data contracts
 
-Certified, contracted, owned. A data contract carries schema, quality rules,
+Every source is certified, carries a contract, and has an owner. A data contract carries schema, quality rules,
 semantic definitions, an SLA and an owner, and it is a gating prerequisite for
 agentic work.
 
@@ -105,7 +105,7 @@ real owner in it.
 
 **Task 6.** Check the token count against the window. If you are over the
 compaction trigger, decide deliberately: lower the trigger, or drop a source.
-Both are legitimate. Guessing is not.
+Both answers are legitimate. Guessing between them is not.
 
 **Task 7.** Compare against the dump-everything number in the runner output.
 
