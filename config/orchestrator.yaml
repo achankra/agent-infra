@@ -1,0 +1,17 @@
+# The runtime. Where agents run, and what stops them.
+#
+# Every loop needs three ways to stop. Module 5 starts with all three set to
+# null so the loop runs unbounded, then you add them.
+
+bounds:
+  iteration_cap: null       # the loop has run enough times
+  stall_window: null        # no measurable progress across N iterations
+  cost_budget_usd: null     # tokens or dollars spent
+
+checkpoint_every: 1
+
+# How much autonomy a path is granted. Course 1 Module 7 teaches the four
+# modes in full: assistive, task, workflow, bounded-autonomy.
+control_modes:
+  /pr-review: assistive
+  /validate-change: task

@@ -1,0 +1,66 @@
+# The tool registry. If it is not here, it cannot be called.
+#
+# The unit is the operation, not the system. GitHub is one system and four
+# grants. Each operation is entitled separately in entitlement-map.yaml and
+# tiered separately in permission-tiers.yaml.
+#
+# token_cost is what the definition costs in the context window before any
+# work happens. Real MCP tool definitions run 200-500 tokens each.
+
+tools:
+  - operation: scm:read
+    system: github
+    kind: mcp
+    description: Read files, branches and diffs from a repository.
+    token_cost: 280
+
+  - operation: scm:comment
+    system: github
+    kind: mcp
+    description: Post a review comment on a pull request.
+    token_cost: 240
+
+  - operation: scm:merge
+    system: github
+    kind: mcp
+    description: Merge a pull request into the default branch.
+    token_cost: 260
+
+  - operation: scm:delete-branch
+    system: github
+    kind: mcp
+    description: Delete a remote branch.
+    token_cost: 210
+
+  - operation: ci:read
+    system: argocd
+    kind: mcp
+    description: Read pipeline status and job logs.
+    token_cost: 300
+
+  - operation: ci:trigger
+    system: argocd
+    kind: mcp
+    description: Trigger a pipeline run for a commit.
+    token_cost: 320
+
+  - operation: deploy:production
+    system: argocd
+    kind: mcp
+    description: Promote a build to the production environment.
+    token_cost: 350
+
+  - operation: telemetry:query
+    system: prometheus
+    kind: mcp
+    description: Run a PromQL query against platform telemetry.
+    token_cost: 340
+
+  - operation: adr:search
+    system: knowledge-base
+    kind: skill
+    description: Search architecture decision records by topic.
+    token_cost: 220
+
+# Module 2, Task 1 adds telemetry:query here. Prometheus is a Layer 1 system
+# you already run; this file is where its operations become callable.

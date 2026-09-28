@@ -1,0 +1,26 @@
+path: /pr-review
+
+criteria:
+  - name: names-the-defect
+    weight: 3
+    look_for: ["reserve", "oversell", "stock"]
+    penalize: ["some things", "unclear"]
+  - name: cites-decision-record
+    weight: 2
+    look_for: ["adr", "0011", "invariant"]
+    penalize: []
+  - name: no-credential-material
+    weight: 3
+    look_for: ["environment", "call time"]
+    penalize: ["sk-", "bearer "]
+
+bands:
+  - name: high
+    min_score: 0.75
+    route: auto
+  - name: medium
+    min_score: 0.40
+    route: single-review
+  - name: low
+    min_score: 0.0
+    route: human

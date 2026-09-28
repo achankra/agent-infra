@@ -1,0 +1,55 @@
+# The permission surface. Three tiers, not a binary switch.
+#
+# Which tier an operation falls into is reviewed config. It is not hardcoded in
+# the agent and not decided at runtime by a model. A deterministic classifier
+# means the agent cannot talk its way into a lower tier.
+#
+# Anything not listed here classifies as dangerous. Default deny, by omission.
+
+tiers:
+  safe:
+    - scm:read
+    - ci:read
+    - adr:search
+
+  moderate:
+    - scm:comment
+    - ci:trigger
+
+  dangerous:
+    - scm:merge
+    - scm:delete-branch
+    - deploy:production
+
+rules:
+  safe:
+    decision: allow
+  moderate:
+    decision: allow
+  dangerous:
+    decision: deny
+
+# Check 2: the input is an attack surface. This check has no IDP ancestor,
+# because a deterministic pipeline never had to screen inbound content for
+# instructions. It does not take instructions from data.
+injection_patterns:
+  - "ignore (all )?(previous|prior) instructions"
+  - "disregard (the )?(system|above)"
+  - "you are now (a|an) [a-z ]*"
+  - "reveal (your )?(system )?prompt"
+  - "print (the )?(env|environment|secrets)"
+
+# Check 3: output and destination. Half of this exists in an IDP already,
+# as secret scanning and per-zone egress rules. What changes is that scanning
+# happens at action time rather than at merge time, and egress binds to an
+# agent identity rather than a network zone.
+output_patterns:
+  aws_key: "AKIA[0-9A-Z]{16}"
+  private_key: "-----BEGIN [A-Z ]*PRIVATE KEY-----"
+  bearer_token: "(?i)bearer [a-z0-9._-]{24,}"
+
+egress_allowlist:
+  - github.acme.internal
+  - argocd.acme.internal
+  - prometheus.acme.internal
+  - gist.github.com

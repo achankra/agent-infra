@@ -1,0 +1,35 @@
+# The rubric scores what no command can check. It never hard-fails the loop:
+# a low score routes to a human.
+#
+# Across 21 judges and roughly 541,000 judgments, rankings moved by up to 14
+# benchmarks. Rubrics and golden sets narrow the gap without closing it, which
+# is why the judge scores and the gates decide.
+
+path: /validate-change
+
+criteria:
+  - name: cites-decision-record
+    weight: 2
+    look_for: ["adr", "0011", "invariant"]
+    penalize: []
+
+  - name: names-the-defect
+    weight: 3
+    look_for: ["stock", "oversell", "reserve"]
+    penalize: ["unclear", "unknown"]
+
+  - name: no-credential-material
+    weight: 3
+    look_for: ["environment", "env var"]
+    penalize: ["sk-", "bearer "]
+
+bands:
+  - name: high
+    min_score: 0.75
+    route: auto
+  - name: medium
+    min_score: 0.45
+    route: single-review
+  - name: low
+    min_score: 0.0
+    route: human

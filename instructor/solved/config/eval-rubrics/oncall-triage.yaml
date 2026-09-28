@@ -1,0 +1,26 @@
+path: /oncall-triage
+
+criteria:
+  - name: names-the-signal
+    weight: 3
+    look_for: ["latency", "error", "alert"]
+    penalize: ["unclear"]
+  - name: cites-prior-incident
+    weight: 2
+    look_for: ["adr", "incident", "runbook"]
+    penalize: []
+  - name: proposes-next-action
+    weight: 2
+    look_for: ["recommend", "next", "page"]
+    penalize: []
+
+bands:
+  - name: high
+    min_score: 0.75
+    route: auto
+  - name: medium
+    min_score: 0.40
+    route: single-review
+  - name: low
+    min_score: 0.0
+    route: human

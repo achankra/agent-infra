@@ -1,0 +1,25 @@
+# Which operations each path may call. Curation is a platform job.
+#
+# Selection accuracy degrades well before the window fills, so a grant list is a
+# decision, not a default. Left to the path author the answer is always
+# "all of them".
+
+grants:
+  - path: /pr-review
+    operations:
+      - scm:read
+      - scm:comment
+      - adr:search
+      - telemetry:query
+
+  - path: /validate-change
+    operations:
+      - scm:read
+      - ci:read
+      - ci:trigger
+
+  - path: /oncall-triage
+    operations:
+      - telemetry:query
+      - adr:search
+      - scm:comment

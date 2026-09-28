@@ -1,0 +1,20 @@
+# Runtime state. Every lab regenerates it; none of it belongs in the repo.
+.state/
+*.prom
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Never. The gateway brokers credentials; nothing here should hold one.
+.env
+*.pem
+*.key

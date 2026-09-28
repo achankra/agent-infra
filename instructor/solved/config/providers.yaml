@@ -1,0 +1,66 @@
+# The provider inventory. A managed list, not a preference.
+#
+# Approved on what terms means approved on evidence from your own paths, not
+# on a public leaderboard. Module 6 builds the rubric and golden sets that
+# produce that evidence; the approved list and the pinned versions are
+# artifacts of Module 5.
+
+# api        which wire format the gateway speaks to it: messages or
+#            chat-completions
+# api_key_env  the brokered credential. The gateway reads it; nothing else does
+# sdk        the client package to import in --live mode. Named here so no
+#            file in substrate/ has to know which vendor you bought
+providers:
+  - name: frontier-vendor
+    status: approved
+    trains_on_input: false
+    log_retention_days: 30
+    owner: platform-eng
+    # How the gateway talks to it, and which brokered credential it uses.
+    # Both live here so swapping a vendor never touches substrate code.
+    api: messages
+    api_key_env: FRONTIER_VENDOR_API_KEY
+    sdk: <vendor-client-package>
+
+  - name: internal-vllm
+    status: approved
+    trains_on_input: false
+    log_retention_days: 0
+    owner: platform-eng
+    api: chat-completions
+    api_key_env: INTERNAL_VLLM_API_KEY
+    sdk: <vendor-client-package>
+    base_url: http://vllm.internal.svc:8000/v1
+
+  - name: some-startup
+    status: unapproved
+    trains_on_input: true
+    log_retention_days: 365
+    owner: unowned
+    api: chat-completions
+    api_key_env: SOME_STARTUP_API_KEY
+    sdk: <vendor-client-package>
+
+models:
+  # pinned_version is required. Models are silently updated and deprecated,
+  # and unpinned versions make gate results incomparable across runs.
+  - id: large
+    provider: frontier-vendor
+    pinned_version: frontier-large-4-5
+    hosting: managed
+    max_data_class: internal
+    usd_per_1k_tokens: 0.003
+
+  - id: small
+    provider: frontier-vendor
+    pinned_version: frontier-small-4-5-20251001
+    hosting: managed
+    max_data_class: internal
+    usd_per_1k_tokens: 0.0008
+
+  - id: local-70b
+    provider: internal-vllm
+    pinned_version: llama-3.3-70b-instruct
+    hosting: self-hosted
+    max_data_class: confidential
+    usd_per_1k_tokens: 0.0002

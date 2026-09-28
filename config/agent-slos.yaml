@@ -1,0 +1,40 @@
+# Operating metrics for a path, once the gates pass.
+#
+# Gates and rubrics answer whether one artifact ships. These answer whether the
+# path is working at all. Six metrics, from The Platform Engineer's Handbook,
+# Ch 14, Table 14.3. Nothing gates on them: they are what you look at in week
+# two, when you are deciding whether to earn the next control mode.
+#
+# investigate_at is not a failure threshold. It is the point at which the
+# number stops being background and becomes a question.
+
+metrics:
+  confidence_score:
+    measures: how certain the agent is in its decision
+    healthy: "75-95%"
+    investigate_at: consistently below 60%
+
+  human_override_rate:
+    measures: how often engineers reject the agent's recommendation
+    healthy: below 5%
+    investigate_at: above 30%, the agent is proposing poor decisions
+
+  triage_accuracy:
+    measures: share of incidents classified correctly
+    healthy: above 85%
+    investigate_at: below 80%, stop autonomous use
+
+  time_to_resolution:
+    measures: MTTR for agent-assisted against manual
+    healthy: agent-assisted is faster
+    investigate_at: agent-assisted is slower, check signal quality
+
+  false_positive_rate:
+    measures: how often the agent flags a non-issue
+    healthy: below 10%
+    investigate_at: above 25%, recalibrate thresholds
+
+  cost_per_action:
+    measures: infrastructure, tokens and human time per resolution
+    healthy: stable or decreasing
+    investigate_at: spiking, check token usage or an unbounded loop

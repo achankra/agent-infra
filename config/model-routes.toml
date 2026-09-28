@@ -1,0 +1,19 @@
+# The model gateway. Clients authenticate to the gateway, never to providers,
+# so keys stay brokered and quotas and metering live in one place.
+#
+# In May 2026 an AI evaluation vendor's cloud account holding customer API
+# keys was accessed, and every customer was told to rotate. Keys held by a
+# third party you did not threat-model are already lost.
+
+[routing]
+default = "large"
+fallback_on_error = "small"
+
+[quota]
+tokens_per_run = 40000
+
+[by_path."/pr-review"]
+model = "large"
+
+[by_path."/validate-change"]
+model = "large"

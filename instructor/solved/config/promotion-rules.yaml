@@ -1,0 +1,19 @@
+# What ships, what retries, what reverts.
+#
+# The judge routes; it does not decide alone. A low score sends work to a
+# person rather than failing the loop.
+
+routes:
+  auto:
+    action: promote
+    reason: gates passed and the rubric scored in the high band
+  single-review:
+    action: review
+    reason: gates passed, one reviewer confirms before promotion
+  human:
+    action: review
+    reason: rubric scored low, a person decides rather than the loop failing
+
+rollback:
+  on_gate_failure_after_promote: revert
+  keep_evidence: true

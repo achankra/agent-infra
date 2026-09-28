@@ -1,0 +1,19 @@
+# Governance. Spend ceilings, granted centrally.
+#
+# Module 1 makes a claim about this file: a cost cap is a platform parameter
+# and an iteration ceiling is a path parameter, which is the opposite of what
+# most people guess. The reason is blast radius. One path spending more than
+# it should is a bill everyone pays, so the ceiling is set once, here. How
+# many turns that path takes to get there is nobody else's problem, so the
+# ceiling sits in orchestrator.yaml where the path owner can edit it.
+#
+# A path owner may always be more conservative than this file. Never less.
+# Setting cost_budget_usd above the ceiling does not raise the ceiling; the
+# run is clamped and the decision is recorded.
+
+spend:
+  # Per run, across every model call the run makes.
+  max_cost_budget_usd: 2.00
+
+  # Per run, across every path. The model gateway meters against this.
+  max_tokens_per_run: 40000

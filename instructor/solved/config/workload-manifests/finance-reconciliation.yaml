@@ -1,0 +1,39 @@
+# Module 8, Task 1 and 2.
+#
+# A finance workload, declared against the same substrate that runs
+# /pr-review. Platform engineers own the substrate; domain teams own the
+# workflow. Nothing in this file is software-delivery specific.
+#
+# Fill in every TODO. The check verifies that a non-software workload needs
+# no new pillars, only new parameters.
+
+path: /reconcile-ledger
+domain: finance
+owner: finance-ops                 # the domain team that owns this workflow
+
+identity:
+  ttl_seconds: 900         # one credential per task, short-lived
+  entitlements:             # operations, not systems
+    - ledger:read
+    - ledger:post
+
+context:
+  sources:                  # what the workload is handed
+    - gl-entries
+    - bank-statements
+  data_class: confidential          # public | internal | confidential
+
+execution:
+  control_mode: task        # assistive | task | workflow | bounded-autonomy
+  iteration_cap: 8
+  cost_budget_usd: 2.00
+
+evaluation:
+  definition_of_done: the ledger balances to zero variance against the bank statement  # what a deterministic gate would check
+  low_score_routes_to: human # never "fail"
+
+cost:
+  # The single number leadership asks for. The FinOps Foundation moved the
+  # number leadership asks for. You derive it; no framework hands it to you.
+  metric: cost_per_workflow
+  target_usd: 1.25

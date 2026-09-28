@@ -1,0 +1,44 @@
+# Workload identity. One credential per task, short-lived, revocable.
+#
+# The starter repo ships with a pre-provisioned identity for /pr-review so
+# Module 2 can scope an entitlement before Module 3 teaches how to issue one.
+
+trust_domain: acme.internal
+
+workloads:
+  - name: pr-review
+    path: /pr-review
+    ttl_seconds: 3600
+    entitlements:
+      - scm:read
+      - scm:comment
+      - adr:search
+      - telemetry:query
+
+  - name: validate-change
+    path: /validate-change
+    ttl_seconds: 900
+    entitlements:
+      - scm:read
+      - ci:read
+      - ci:trigger
+
+  - name: oncall-triage
+    path: /oncall-triage
+    ttl_seconds: 900
+    entitlements:
+      - telemetry:query
+      - adr:search
+      - scm:comment
+
+# Humans an agent can act for. An agent acting for a person gets no more than
+# that person holds, so the issued entitlement set is intersected with theirs.
+humans:
+  - name: dana@acme.internal
+    entitlements:
+      - scm:read
+      - scm:comment
+      - scm:merge
+  - name: intern@acme.internal
+    entitlements:
+      - scm:read

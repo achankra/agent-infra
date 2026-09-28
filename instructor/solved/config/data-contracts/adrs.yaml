@@ -1,0 +1,9 @@
+source: adrs
+certified: true
+owner: architecture-guild
+schema: markdown-adr
+semantics: Accepted architecture decisions. Superseded ADRs are removed.
+quality_rules:
+  - status field present
+  - owner field present
+sla: reviewed quarterly

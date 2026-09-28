@@ -1,0 +1,51 @@
+# Context assembly. What you hand the agent, and what it assumes because
+# you didn't.
+#
+# Retrieval is RAG for knowledge and MCP for live systems. The window exists
+# per turn and is not memory.
+
+[window]
+# Sized so the Module 4 assembly actually meets the trigger. A window you
+# never fill teaches nothing.
+max_tokens = 1200
+# Compaction runs before the window degrades, not after. A summary written
+# after rot has set in is itself degraded, because the model producing it is
+# already impaired. The trigger point is the design decision.
+compact_at_fraction = 0.6
+
+[governance]
+# Governed sources only: certified, contracted, owned. A source without a
+# data contract is not assembled, it is reported.
+require_data_contract = true
+
+[sources.adrs]
+kind = "knowledge"
+retrieval = "rag"
+path = "sample_app/docs/adr"
+
+[sources.diff]
+kind = "knowledge"
+retrieval = "mcp"
+path = "sample_app/src/inventory.py"
+
+[sources.ticket]
+kind = "live"
+retrieval = "mcp"
+path = "sample_app/docs/tickets/PLAT-418.md"
+
+[sources.conventions]
+kind = "knowledge"
+retrieval = "rag"
+path = "sample_app/docs/conventions.md"
+
+[sources.everything]
+# The dump-everything baseline Module 4 compares against.
+kind = "knowledge"
+retrieval = "file"
+path = "sample_app"
+
+[paths."/pr-review"]
+sources = ["diff"]
+
+[paths."/validate-change"]
+sources = ["diff"]

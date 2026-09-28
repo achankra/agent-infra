@@ -1,0 +1,33 @@
+# Traces, audit and cost attribution. Governance, built once.
+#
+# NIST AI RMF and OWASP converge on immutable logs of actions and decisions.
+# Truncation is the common failure, so retention is a policy line here rather
+# than a default in code.
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+processors:
+  # Every span carries the identity that caused it. A run that cannot be
+  # attributed is the failure mode that produces no postmortem.
+  attributes/identity:
+    actions:
+      - key: agent.identity
+        action: insert
+        from_attribute: spiffe.id
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:8080
+
+audit:
+  immutable: false
+  retention_days: 30
+  # Cost is attributed per path, per user and per team.
+  attribute_cost_by:
+    - path
+    - acts_for
+    - team

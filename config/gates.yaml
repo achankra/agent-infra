@@ -1,0 +1,15 @@
+# The definition of done, written as gates with exit codes.
+#
+# Deterministic gates decide. Exit code is the verdict, and no model is
+# consulted anywhere in this file.
+
+gates:
+  - name: functional
+    category: functional
+    paths: ["/validate-change", "/pr-review"]
+    run: "python3 sample_app/src/test_inventory.py"
+
+  - name: policy-secrets
+    category: policy
+    paths: ["/validate-change", "/pr-review"]
+    run: "python3 scripts/scan_secrets.py sample_app/src"

@@ -1,0 +1,12 @@
+# A data contract carries schema, quality rules, semantic definitions, an SLA
+# and an owner. It is a gating prerequisite for agentic work: a source without
+# one is not assembled.
+source: diff
+certified: true
+owner: platform-eng
+schema: python-source
+semantics: The working tree of the service under review.
+quality_rules:
+  - parses as valid Python
+  - no generated files
+sla: read-through, no staleness window

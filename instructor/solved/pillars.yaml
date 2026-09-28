@@ -1,0 +1,82 @@
+# Module 1, Task 1 and Task 2.
+#
+# Ten pillars across three blocks. For each one, say whether the platform team
+# owns the parameter (governance) or the path owner does (harness), and which
+# config artifact carries it.
+#
+# The test in both directions:
+#   if adding a path forces you to build a control, it was not built once
+#   if adding a path requires no declaration, the harness is not per-path
+#
+# Fill in "owner" for every pillar. Use exactly: governance | harness | models
+
+pillars:
+  - name: identity
+    block: governance
+    owner: governance
+    artifact: spiffe-ids.yaml
+
+  - name: agent-security
+    block: governance
+    owner: governance
+    artifact: permission-tiers.yaml
+
+  - name: agent-observability
+    block: governance
+    owner: governance
+    artifact: otel-collector.yaml
+
+  - name: capability
+    block: harness
+    owner: harness
+    artifact: tool-registry.yaml
+
+  - name: context
+    block: harness
+    owner: harness
+    artifact: rag-config.toml
+
+  - name: execution
+    block: harness
+    owner: harness
+    artifact: orchestrator.yaml
+
+  - name: evaluation
+    block: harness
+    owner: harness
+    artifact: eval-rubrics/
+
+  - name: providers
+    block: models
+    owner: models
+    artifact: providers.yaml
+
+  - name: inference-endpoints
+    block: models
+    owner: models
+    artifact: model-routes.toml
+
+  - name: model-hosting
+    block: models
+    owner: models
+    artifact: providers.yaml
+
+# Module 1, Task 3.
+#
+# Six parameters. Say who has authority over each one. A path owner may choose
+# inside the envelope they were granted; they may never widen it.
+#
+# Use exactly: platform | path-owner
+parameters:
+  - name: identity scope
+    authority: platform
+  - name: which entitled tools this path uses
+    authority: path-owner
+  - name: policy tier map
+    authority: platform
+  - name: iteration ceiling
+    authority: path-owner
+  - name: cost cap
+    authority: platform
+  - name: definition of done
+    authority: path-owner
