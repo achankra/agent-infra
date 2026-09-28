@@ -1,66 +1,81 @@
-# Where this comes from
+# References
 
-Course 3 is not a new argument. It is the platform-engineering argument I have
-been making in three books, pointed at a non-human principal. This file records
-which idea came from where, so you can go and read the long version.
+Where each pillar's design came from. Chapter-level, so you can go to the
+long version.
 
-## My own books
+## Governance
 
-**Chankramath, A., Cheneweth, N., Oliver, B., Alvarez, S.**
-*Effective Platform Engineering.* Manning, 2026. ISBN 9781633436497.
+Identity, least privilege by persona, and the escape hatch as temporary
+privilege escalation with logging, auditing and reversion:
+*The Platform Engineer's Handbook*, Ch 3.
 
-- Ch 4, Governance, compliance, and trust. Policy as code as enforcement gates,
-  and the identity separation this course leans on: "Infrastructure available
-  through the platform is provisioned by the platform on the development team's
-  behalf rather than merely granting the team permissions to do it themselves."
-  That sentence is Module 2's whole argument about exposing operations rather
-  than systems, written three years before anyone needed it for agents.
-- Ch 7, Platform control plane foundations. The substrate this course calls
-  Layer 3 is a control plane. Same shape, new tenant.
-- Ch 5, Evolutionary observability. Module 3's audit ledger.
+Permission tiers. Ch 14, Table 14.2 classifies agent actions as safe (agent
+decides, agent executes), medium (agent proposes, human approves) and high
+(human decides, human executes). `config/permission-tiers.yaml` is that table.
 
-**Chankramath, A., Gibson, A.**
-*The Platform Engineer's Handbook.* Packt, 2026.
+The same three bands from the config side, as an override pyramid of flexible
+defaults, governed overrides carrying justification and an expiry, and blocked
+configurations: *Domain-Driven Platform Engineering*, Ch 6.
 
-- Ch 3, Securing Platform Access. Least privilege by persona, and the escape
-  hatch as "temporary privilege escalation with the right amount of automated
-  logging, auditing, and reverting." Module 3's delegation rule and the
-  envelope-widening route both come from here. The CI/CD pipeline running on
-  one cluster-admin service account is the antipattern Module 3 opens on.
-- Ch 11, Validating Compliance and Policy as Code. Rego, Gatekeeper, and the
-  point that a policy everyone exempts is either badly designed or badly
-  explained.
-- Ch 14, Agentic and AI-Augmented Platforms. Table 14.2 classifies agent
-  actions as safe (agent decides, agent executes), medium (agent proposes,
-  human approves), and high (human decides, human executes). Module 3's three
-  permission tiers are that table, as config. Table 14.3 gives the six
-  operating metrics in `config/agent-slos.yaml`.
+Policy as code as enforcement gates, and the separation of platform-user
+identity from cloud infrastructure identity: *Effective Platform Engineering*,
+Ch 4. Rego and Gatekeeper: *The Platform Engineer's Handbook*, Ch 11.
 
-**Chankramath, A., Ryan, E.**
-*Domain-Driven Platform Engineering.* Apress, 2026.
-ISBN 979-8-8688-2760-0. doi:10.1007/979-8-8688-2761-7
+Audit and attribution: *Effective Platform Engineering*, Ch 5.
 
-- Ch 6, Golden Paths and API Design per Domain. The override pyramid: flexible
-  defaults a developer changes freely, governed overrides that require
-  justification and carry an expiry, and blocked configurations that cannot be
-  overridden regardless of justification. `config/permission-tiers.yaml` is
-  that pyramid with a different subject.
-- Ch 6 also carries the domain defaults idea that `config/data-contracts/`
-  implements: encode the regulatory requirement once so no developer has to
-  understand the nuance.
-- Ch 10, GenAI and Autonomous Platforms.
+## Harness
 
-## Not my book
+Capability as governed exposure rather than system access. *Effective Platform
+Engineering*, Ch 4: infrastructure is provisioned by the platform on the team's
+behalf rather than by granting the team permissions to do it themselves. The
+same rule, with an agent in the team's place, is `config/entitlement-map.yaml`.
 
-**von Grunberg, K., Galante, L.** *Thinking in Platforms.* Weave
-Intelligence, 2026. ISBN 978-3-9828877-0-8.
+Domain defaults, which encode a regulatory requirement once so no individual
+has to understand the nuance: *Domain-Driven Platform Engineering*, Ch 6. That
+is what `config/data-contracts/` implements.
 
-The paths-to-outcome model, and the enterprise extension of identity, policy
-and state. Course 3 builds that extension for agents. Cited on the slides by
-its authors, not by me.
+The control plane the substrate is modeled on: *Effective Platform
+Engineering*, Ch 7.
 
-**Galante, L., von Grunberg, K., Haigh, M., Chankramath, A.**
-*The four levels of agentic software development in the enterprise.*
-Weave Intelligence, 2026.
+Operating metrics in `config/agent-slos.yaml`: *The Platform Engineer's
+Handbook*, Ch 14, Table 14.3.
 
-The maturity model Course 2 teaches. I am one of four authors.
+Confidence gating ahead of autonomous execution: same chapter.
+
+## Claims with external sources
+
+Harness variance against model variance, and the 68% / 34% figure for one
+model across two harnesses: arXiv:2605.23950.
+
+Tool count and selection accuracy: arXiv:2411.15399. Note the scope, which is
+a quantized 8B model on edge hardware, not a frontier model.
+
+Position of a fact within the context window: arXiv:2307.03172.
+
+Judge reliability: arXiv:2606.19544, and RAND's harness at arXiv:2603.05399.
+
+Long-horizon completion against human task time: arXiv:2606.29537.
+
+Agents as workloads, and static API keys as an anti-pattern for agent
+identity: IETF draft-ietf-wimse-aims.
+
+AI spend management among FinOps practitioners: State of FinOps 2026.
+
+## Course context
+
+The paths-to-outcome model and its enterprise extension of identity, policy
+and state: von Grunberg and Galante, *Thinking in Platforms*, Weave
+Intelligence, 2026.
+
+The four maturity levels taught in Course 2: Galante, von Grunberg, Haigh and
+Chankramath, *The four levels of agentic software development in the
+enterprise*, Weave Intelligence, 2026.
+
+## Books cited above
+
+Chankramath, Cheneweth, Oliver and Alvarez. *Effective Platform Engineering*.
+Manning, 2026.
+
+Chankramath and Gibson. *The Platform Engineer's Handbook*. Packt, 2026.
+
+Chankramath and Ryan. *Domain-Driven Platform Engineering*. Apress, 2026.

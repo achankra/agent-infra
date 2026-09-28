@@ -59,13 +59,12 @@ rather than decides.
 ## Operating metrics
 
 The judge is not the only thing worth measuring. `config/agent-slos.yaml`
-carries the six metrics from *The Platform Engineer's Handbook*, Ch 14,
-Table 14.3, with the healthy band and the point at which you stop and look:
-confidence score, human override rate, triage accuracy, time to resolution,
-false positive rate, and cost per action. The runner prints your run against
-them. Nothing gates on them yet, deliberately. They are what you watch in
-week two, once the gates pass and you have to decide whether the path is
-actually working.
+carries six metrics with a healthy band and the point at which to stop and
+look: confidence score, human override rate, triage accuracy, time to
+resolution, false positive rate, and cost per action. The runner prints your
+run against them. Nothing gates on them, deliberately. They are what you watch
+in week two, once the gates pass and you have to decide whether the path is
+working.
 
 ## Calibration
 

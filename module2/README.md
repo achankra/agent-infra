@@ -59,11 +59,6 @@ There is a second gateway later in the course. This one governs what an agent
 can **do**. The model gateway in Module 5 governs what it can **think with**.
 Same pattern, different subject.
 
-I made this argument before agents existed. *Effective Platform Engineering*,
-Ch 4: infrastructure available through the platform is provisioned by the
-platform on the team's behalf rather than merely granting the team permissions
-to do it themselves. Replace "team" with "agent" and that is this module.
-
 ## Fewer tools beat more
 
 This is measured, not a preference. Llama 3.1 8B fails a function-calling

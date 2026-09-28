@@ -47,12 +47,9 @@ Modules 1, 7 and 8 do not add a pillar. Module 1 is the map, module 7 takes one
 path through every pillar, module 8 points the same substrate at a workload
 that has nothing to do with software.
 
-## Where the ideas come from
+## References
 
-`REFERENCES.md` maps each pillar back to the chapter it came from, across
-*Effective Platform Engineering*, *The Platform Engineer's Handbook* and
-*Domain-Driven Platform Engineering*. None of this is new. It is the platform
-argument, pointed at a non-human principal.
+`REFERENCES.md` maps each pillar to the source it came from.
 
 ## Setup
 

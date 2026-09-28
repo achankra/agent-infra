@@ -49,12 +49,6 @@ a run asking for more than the ceiling gets the ceiling with the decision
 recorded. Be more conservative than the platform whenever you like. Never
 less.
 
-*The Platform Engineer's Handbook*, Ch 14 puts a confidence gate in front of
-autonomous execution: at 95% or above on an action classified autonomous the
-agent executes and logs, and otherwise it opens an approval ticket. The three
-stops here are the same instinct applied to the loop rather than to a single
-action.
-
 ## Control modes
 
 How much autonomy a path is granted, from assistive to bounded autonomy.

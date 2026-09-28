@@ -5,12 +5,6 @@
 Governance is defined by being built once and enforced everywhere, so it is
 taught once, in one module, rather than split across the course.
 
-I have written the human version of this twice. *The Platform Engineer's
-Handbook*, Ch 3: a CI/CD pipeline running on one very permissive service
-account with cluster-admin rights, because it was convenient. Tokens with no
-expiration end up in Git or printed into a debug log. Everything below is that
-chapter, with an agent in the pipeline's seat.
-
 ## Agents are principals, not borrowed logins
 
 Own credential, own scope, own budget.
@@ -32,14 +26,11 @@ shrink.
 
 ## The permission surface: three tiers, not a binary switch
 
-The three bands are not new. *The Platform Engineer's Handbook*, Ch 14,
-Table 14.2 classifies agent actions as safe, where the agent decides and the
-agent executes; medium, where the agent proposes and a human approves; and
-high, where a human decides and a human executes. *Domain-Driven Platform
-Engineering*, Ch 6 reaches the same three bands from the config side, as an
-override pyramid: flexible defaults changed freely, governed overrides that
-need documented justification and carry an expiry, and blocked configurations
-that cannot be overridden regardless of justification.
+Three bands: safe, where the agent decides and executes; moderate, where a
+human approves and the agent executes; dangerous, where a human decides. The
+same split appears in config terms as an override pyramid, with flexible
+defaults, governed overrides that carry a justification and an expiry, and
+blocked configurations. See REFERENCES.md.
 
 What follows is those three bands as a file.
 
