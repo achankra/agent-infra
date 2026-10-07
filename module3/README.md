@@ -54,8 +54,9 @@ bar inference cannot meet.
 
 ## Extending the policy gate to agents
 
-Two of the three checks already exist in your IDP. Say so out loud, because an
-audience that thinks it is being taught policy-as-code in 2026 stops listening.
+Two of the three checks already exist in your IDP. Saying so matters, because
+a team that already runs policy-as-code will stop listening if you present
+these as new.
 
 | Check | IDP ancestor | What changes for an agent |
 |---|---|---|

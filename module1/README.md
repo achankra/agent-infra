@@ -103,7 +103,7 @@ apply the two-direction test above.
 **Task 3.** Six parameters at the bottom of the file, each with `authority` set
 to TODO. Replace each with `platform` or `path-owner`.
 
-Two of the six are worth arguing about in the session. A cost cap looks like
+Two of the six are worth arguing about. A cost cap looks like
 something a path owner should set, and an iteration ceiling looks like a
 platform concern. Work out which way round they go and why.
 
