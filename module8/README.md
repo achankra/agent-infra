@@ -25,10 +25,10 @@ and it is why this is staged rather than a big-bang rollout.
 ## The status of this claim
 
 Agents do span functions today, but they do it through separate platforms. The
-major vendor offerings for IT, HR, finance, legal and procurement are distinct
+agent platforms sold into IT, HR, finance and other functions are separate
 products, each with its own identity model, its own audit trail and its own
 bill. I have not found a documented case of one organization reusing the same
-engineering pillars across all of them.
+engineering pillars across them.
 
 The argument for a single substrate therefore rests on that fragmentation
 rather than on anyone's existing practice.
