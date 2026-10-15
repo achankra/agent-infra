@@ -1,8 +1,7 @@
 # Module 1, Task 1 and Task 2.
 #
-# Ten pillars across three blocks. For each one, say whether the platform team
-# owns the parameter (governance) or the path owner does (harness), and which
-# config artifact carries it.
+# Ten pillars across three blocks. For each one, set owner to governance,
+# harness or models. The artifact field names the config file that carries it.
 #
 # The test in both directions:
 #   if adding a path forces you to build a control, it was not built once
@@ -44,7 +43,7 @@ pillars:
   - name: evaluation
     block: harness
     owner: TODO
-    artifact: eval-rubrics/
+    artifact: gates.yaml
 
   - name: providers
     block: models

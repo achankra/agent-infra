@@ -18,7 +18,7 @@ class RegistryError(Exception):
 @dataclass(frozen=True)
 class Tool:
     operation: str          # scm:read, ci:trigger, scm:merge
-    system: str             # github, argocd, prometheus
+    system: str             # github, github-actions, argocd, prometheus, erp
     kind: str               # mcp | skill | api | a2a
     description: str
     token_cost: int         # every definition sits in the context window

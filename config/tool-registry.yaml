@@ -33,13 +33,13 @@ tools:
     token_cost: 210
 
   - operation: ci:read
-    system: argocd
+    system: github-actions
     kind: mcp
     description: Read pipeline status and job logs.
     token_cost: 300
 
   - operation: ci:trigger
-    system: argocd
+    system: github-actions
     kind: mcp
     description: Trigger a pipeline run for a commit.
     token_cost: 320
@@ -55,6 +55,21 @@ tools:
     kind: skill
     description: Search architecture decision records by topic.
     token_cost: 220
+
+  # Module 8 declares a finance workload against these. Registered and tiered
+  # here, like every other operation; whether a given posting is allowed for
+  # a given period is object-level state the finance system owns.
+  - operation: ledger:read
+    system: erp
+    kind: mcp
+    description: Read general ledger entries for an account and period.
+    token_cost: 260
+
+  - operation: ledger:post
+    system: erp
+    kind: mcp
+    description: Post a journal entry to the general ledger.
+    token_cost: 300
 
 # Module 2, Task 1 adds telemetry:query here. Prometheus is a Layer 1 system
 # you already run; this file is where its operations become callable.

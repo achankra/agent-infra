@@ -13,7 +13,7 @@ declarative config and watch behavior change.
 
 ```
                         LAYER 1  TOOLING (your IDP, already yours)
-                        github   argocd   prometheus   knowledge-base
+                        github   github-actions   argocd   prometheus   knowledge-base
                                         ^
                                         | tool calls, through one gateway
                                         |

@@ -31,7 +31,8 @@ evaluation:
   low_score_routes_to: TODO # never "fail"
 
 cost:
-  # The single number leadership asks for. The FinOps Foundation moved the
-  # number leadership asks for. You derive it; no framework hands it to you.
+  # The single number leadership asks for. The FinOps Foundation's framework
+  # meters cost per token, per inference and per API call. Cost per workflow
+  # is derived; no framework hands it to you.
   metric: cost_per_workflow
   target_usd: TODO

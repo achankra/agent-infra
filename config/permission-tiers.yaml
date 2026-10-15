@@ -11,6 +11,7 @@ tiers:
     - scm:read
     - ci:read
     - adr:search
+    - ledger:read
 
   moderate:
     - scm:comment
@@ -20,6 +21,7 @@ tiers:
     - scm:merge
     - scm:delete-branch
     - deploy:production
+    - ledger:post
 
 rules:
   safe:
