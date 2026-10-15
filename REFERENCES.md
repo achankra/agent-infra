@@ -76,6 +76,6 @@ enterprise*, Weave Intelligence, 2026.
 Chankramath, Cheneweth, Oliver and Alvarez. *Effective Platform Engineering*.
 Manning, 2026.
 
-Chankramath and Gibson. *The Platform Engineer's Handbook*. Packt, 2026.
+Chankramath. *The Platform Engineer's Handbook*. Packt, 2026.
 
 Chankramath and Ryan. *Domain-Driven Platform Engineering*. Apress, 2026.
