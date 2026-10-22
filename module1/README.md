@@ -86,41 +86,32 @@ path must never be able to grant itself governance.
 python3 module1/run.py
 ```
 
-You will see the ten pillars, the config artifact that backs each one, and
-which module builds it.
+You will see the ten pillars, the config file that backs each one, the module
+that builds it, and the platform's spend ceiling.
 
-## Your tasks
+## Your task
 
-Open `module1/pillars.yaml`.
+A cost cap looks like something a path owner should set, and an iteration
+ceiling looks like a platform concern. The repo puts them the other way round,
+and you can see why by trying to widen the cost cap from inside a path.
 
-**Task 1.** Every pillar has an `owner` field set to TODO. Replace all ten with
-`governance`, `harness` or `models`.
+Open `config/orchestrator.yaml` and set `cost_budget_usd` under `bounds` to
+`9.00`. The platform ceiling in `config/budget-policy.yaml` is `2.00`. Run
+`python3 module1/run.py` again. The path asked for $9.00 and was granted
+$2.00, and the clamp is written to the audit ledger with the reason.
 
-**Task 2.** The check verifies that each pillar is in the right block. If you
-are unsure, apply the two-direction test above.
+Nothing errored and nothing refused to start. The platform reduced the request
+to what the envelope allows and recorded that it did. The iteration ceiling has
+no such file, because a path that takes more turns costs its own owner and
+nobody else. Blast radius decides the authority in both cases.
 
-**Task 3.** Six parameters at the bottom of the file, each with `authority` set
-to TODO. Replace each with `platform` or `path-owner`.
-
-Two of the six are easy to get backwards. A cost cap looks like something a
-path owner should set, and an iteration ceiling looks like a platform concern.
-
-The repo takes a position on both. `config/budget-policy.yaml` holds the spend
-ceiling, and nothing in a path can raise it. If you set `cost_budget_usd` in
-`config/orchestrator.yaml` above the ceiling, the run is clamped to the ceiling
-and the clamp is recorded in the ledger. The iteration ceiling has no such
-file, because a path that takes more turns costs its own owner and nobody else.
-Blast radius decides the authority in both cases.
-
-Then:
-
-```
-python3 module1/check.py
-```
+Then set `cost_budget_usd` back to `null`. Module 5 starts with every bound
+unset.
 
 ## Done when
 
-All three tasks report PASS.
+The run shows the clamp, and `cost_budget_usd` is back to `null`. Module 1 has
+no checker, because it builds no pillar.
 
 ## What is next
 

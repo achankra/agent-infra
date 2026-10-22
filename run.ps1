@@ -14,11 +14,11 @@ switch ($Command) {
   "setup" {
     Write-Host ""
     Write-Host "run a module:    $py module1\run.py"
-    Write-Host "check your work: $py module1\check.py"
+    Write-Host "check a lab:     $py module2\check.py   (modules 2 to 8)"
   }
   "check" {
     $fail = 0
-    1..8 | ForEach-Object {
+    2..8 | ForEach-Object {
       & $py "module$_\check.py"
       if ($LASTEXITCODE -ne 0) { $fail = 1 }
     }

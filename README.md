@@ -99,11 +99,11 @@ print the answer.
 
 | Module | Title | Pillar built | Config you edit |
 |---|---|---|---|
-| 1 | The substrate that runs paths | none, this is the map | `module1/pillars.yaml`; read `budget-policy.yaml` |
+| 1 | The substrate that runs paths | none, this is the map | `orchestrator.yaml`, briefly; read `budget-policy.yaml` |
 | 2 | The tooling layer | capability | `tool-registry.yaml`, `entitlement-map.yaml`, `mcp-gateway.tf`, `permission-tiers.yaml`, `spiffe-ids.yaml` |
 | 3 | Governance | identity, security, observability | `spiffe-ids.yaml`, `permission-tiers.yaml`, `otel-collector.yaml` |
 | 4 | Context | context | `rag-config.toml`, `data-contracts/` |
-| 5 | Execution and Models | execution, models | `orchestrator.yaml`, `model-routes.toml`; read `sandbox.tf`, `runtime-pool.tf`, `providers.yaml` |
+| 5 | Execution and Models | execution, models | `orchestrator.yaml`, `model-routes.toml`; read `sandbox.tf`, `providers.yaml` |
 | 6 | Evaluation | evaluation | `eval-rubrics/pr-review.yaml`, `gates.yaml`; read `promotion-rules.yaml`, `agent-slos.yaml` |
 | 7 | The Full-Path Build | capstone, all of them | `/oncall-triage` across six files: `spiffe-ids.yaml`, `entitlement-map.yaml`, `rag-config.toml`, `model-routes.toml`, `orchestrator.yaml`, `eval-rubrics/` |
 | 8 | The Future of Platform Engineering | the substrate beyond software | `workload-manifests/` |
@@ -132,9 +132,9 @@ agent-infra/
     seed/                the seeded copy of sample_app that reset restores
     scan_secrets.py      gate command run by config/gates.yaml
     check_hot_path.py    gate command run by config/gates.yaml
-  module1..8/            run.py, check.py and the lab README
+  module1..8/            run.py, the lab README, and check.py for modules 2 to 8
   answer-key/            README.md is the answer key; solved/ holds a solved
-                         config/ and pillars.yaml
+                         config/
 ```
 
 ## The two paths
@@ -200,4 +200,5 @@ a clean start. It does not touch your edits in `config/`.
 ./run.sh check
 ```
 
-Runs all eight checkers. Exit code 0 means every task in the course is done.
+Runs the checkers for modules 2 to 8. Exit code 0 means every task in the
+course is done.

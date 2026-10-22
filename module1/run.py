@@ -1,7 +1,8 @@
 """Module 1: the substrate that runs paths.
 
-Shows the ten pillars, which config artifact backs each one, and which of them
-this repo can already load. Nothing is executed. This module is the map.
+Shows the ten pillars, which config artifact backs each one, and who holds
+authority over the cost ceiling. Nothing is executed except the platform's
+check of the loop's cost budget against the spend ceiling.
 """
 from __future__ import annotations
 
@@ -11,6 +12,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate import config  # noqa: E402
+from substrate.observability import Observability  # noqa: E402
+from substrate.orchestrator import Orchestrator  # noqa: E402
 
 BLOCKS = {
     "governance": ("built once, enforced everywhere",
@@ -80,8 +83,28 @@ def main() -> int:
     except Exception as e:
         kv("tools in registry", f"unreadable: {e}")
 
-    print("\n  Now open module1/pillars.yaml and fill in the TODO fields.")
-    print("  Then run: python3 module1/check.py\n")
+    section("Who holds authority over the cost ceiling")
+    obs = Observability()
+    orch = Orchestrator(obs)
+    asked = (config.load_yaml("orchestrator.yaml").get("bounds") or {}).get("cost_budget_usd")
+    kv("platform ceiling", f"${orch.cost_ceiling_usd:.2f} per run  (config/budget-policy.yaml)")
+    kv("path asks for", "not set" if asked is None else f"${float(asked):.2f}  (config/orchestrator.yaml)")
+    if orch.cost_budget_clamped:
+        kv("path is granted", f"${orch.cost_budget_usd:.2f}  CLAMPED to the ceiling")
+        obs.flush()
+        entry = next(a for a in obs.audit if a.get("decision") == "clamp")
+        kv("ledger", f"{entry['action']} {entry['decision']} by {entry['identity']}, "
+                     f"asked {entry['asked']}, granted {entry['granted']}")
+        bullet("")
+        bullet(entry["reason"])
+        print("\n  Now set cost_budget_usd back to null in config/orchestrator.yaml.")
+        print("  Module 5 starts with every bound unset.\n")
+    elif asked is not None:
+        kv("path is granted", f"${float(asked):.2f}  within the ceiling")
+        print()
+    else:
+        print("\n  Try it: set bounds.cost_budget_usd in config/orchestrator.yaml to 9.00,")
+        print("  run this again, then set it back to null.\n")
     return 0
 
 

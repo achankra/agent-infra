@@ -5,24 +5,21 @@ edit, and no lab needs a Python change.
 
 ## Module 1
 
-pillars.yaml owners:
+Set `cost_budget_usd: 9.00` in `config/orchestrator.yaml` and run
+`module1/run.py`. The path is granted $2.00, the ceiling in
+`config/budget-policy.yaml`, and the ledger records a `bounds.cost_budget`
+clamp by `platform`. Set the value back to `null` afterward.
 
-| pillar | owner |
-|---|---|
-| identity, agent-security, agent-observability | governance |
-| capability, context, execution, evaluation | harness |
-| providers, inference-endpoints, model-hosting | models |
-
-parameters authority:
+Who holds authority over each parameter:
 
 | parameter | authority | why |
 |---|---|---|
 | identity scope | platform | a path must never widen its own scope |
-| which entitled tools this path uses | path-owner | chosen from the granted set |
+| which entitled tools this path uses | path owner | chosen from the granted set |
 | policy tier map | platform | changing it affects every path |
-| iteration ceiling | path-owner | sits under the cost cap |
+| iteration ceiling | path owner | sits under the cost cap |
 | cost cap | platform | blast radius is the budget, not one run |
-| definition of done | path-owner | one path is affected |
+| definition of done | path owner | one path is affected |
 
 ## Module 2
 
@@ -193,7 +190,7 @@ decision you made for `/pr-review`, with a different value.
 
 ## Solved reference
 
-`answer-key/solved/` holds a fully solved `config/` and `pillars.yaml`. To see
+`answer-key/solved/` holds a fully solved `config/`. To see
 how your work differs, run:
 
 ```
