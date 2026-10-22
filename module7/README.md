@@ -1,12 +1,13 @@
 # Module 7: The Full-Path Build
 
-This module runs for 45 minutes and is the capstone. It introduces no new
-pillar, and instead takes one path through every pillar already built.
+This is the capstone. It builds no new pillar and takes one path through every
+pillar already built.
 
 ## Pillar firing order
 
-The order is not documented publicly, because harness orchestration is
-proprietary at every major vendor. It is derived here from necessity instead.
+No vendor documents this order publicly, because harness orchestration is
+proprietary at every major vendor. Here it is derived from what each step
+depends on.
 
 ```
    identity  ---> context ---> capability ---> model ---> evaluation
@@ -33,23 +34,25 @@ absence that hides it until a person notices. A fix that addresses only the
 trigger is cosmetic, because triggers are unbounded while amplifiers and
 concealers are finite and belong to your architecture.
 
-The worked case is the evaluation vendor breach from Module 5. Trigger: a cloud
-account holding customer API keys was accessed. Amplifier: customers had handed
-their provider keys to that vendor to store, so one account held many.
-Concealer: the keys still worked and nothing in the customer's own platform
-changed, so detection came from provider usage spikes rather than from any
-alert they owned.
+The worked case is the evaluation vendor breach from Module 5. The trigger was
+access to a cloud account holding customer API keys. The amplifier was that
+customers had handed their provider keys to that vendor to store, so one
+account held many. The concealer was that the keys still worked and nothing in
+the customer's own platform changed, so detection came from provider usage
+spikes rather than from any alert the customer owned.
 
-Three-layer model from Wu, arXiv:2606.14589, a study of 22 incidents in a
-single production agent runtime between April and June 2026. One system, one
-author: the structure travels, the frequencies do not.
+The three-layer model comes from Wu, arXiv:2606.14589, a study of 22 incidents
+in a single production agent runtime between April and June 2026. Because it
+covers one system and one author, the structure generalizes but the
+frequencies do not.
 
-Identity is the exception worth naming. Its failure mode produces no
-postmortem, because the failure is the inability to attribute.
+In this repo, removing the identity block fails loudly. On a platform that
+falls back to a shared service account, the same gap would fail silently: the
+run would complete and nobody could say which workload did it.
 
 | Pillar removed | What you see |
 |---|---|
-| identity | the run works, and you cannot say who did it |
+| identity | issuing the credential fails: no workload identity registered for the path |
 | capability | the tool call is refused at the registry |
 | gateway | the operation exists and the server is unreachable |
 | context | the source is dropped and reported, and the review is generic |
@@ -59,9 +62,9 @@ postmortem, because the failure is the inability to attribute.
 
 ## Choosing the first control mode
 
-`/pr-review` is the lowest-risk way into production, and the pattern is live in
-production products in 2026. It reads, it comments, it cannot merge. Start
-there, then earn the next control mode with evidence.
+`/pr-review` is the lowest-risk way into production, and production products
+already use the pattern in 2026. It reads and comments, and it cannot merge.
+Start there, then earn the next control mode with evidence.
 
 ## Run it
 
@@ -69,7 +72,7 @@ there, then earn the next control mode with evidence.
 python3 module7/run.py
 ```
 
-Both paths, end to end, with every pillar named as it fires.
+This runs both paths end to end and names every pillar as it fires.
 
 ## Your tasks
 
@@ -77,19 +80,19 @@ The capstone is a third path. On-call wants `/oncall-triage`: an agent that
 reads telemetry when an alert fires, searches decision records and incident
 history, and posts a triage summary. It may not deploy and it may not merge.
 
-You will not write any Python. If the substrate is right, a new path is a
-manifest.
+You will not write any Python. If the substrate is complete, a new path is
+declared entirely in configuration.
 
-**Tasks 1 to 3.** Confirm the substrate is complete. Identities for both
-shipped paths, all three stops set, a rubric for each path. These come from
-Modules 3, 5 and 6. If any of them fail, go back.
+**Tasks 1 to 3.** Confirm the substrate is complete: identities for both
+shipped paths, all three stops set, and a rubric for each path. These come from
+Modules 3, 5 and 6. If any of them fail, go back to that module.
 
 **Task 4.** `/pr-review` still completes and its merge attempt is still
 stopped.
 
 **Task 5.** `/validate-change` still converges and promotes.
 
-**Task 6.** Declare `/oncall-triage` across the harness. Six files:
+**Task 6.** Declare `/oncall-triage` across the harness in six files:
 
 ```
    spiffe-ids.yaml        identity, TTL, entitlements
@@ -103,9 +106,9 @@ stopped.
 Give it `telemetry:query` from Module 2 and `adr:search`. Do not give it
 `deploy:production` or `scm:merge`.
 
-**Task 7.** You should not have touched the governance structure. The tier map
-may gain operations; it must still have three tiers and three rules. If adding
-a path forced you to build a governance control, governance was not built once.
+**Task 7.** Leave the governance structure alone. The tier map may gain
+operations, but it must still have three tiers and three rules. If adding a
+path forced you to build a governance control, governance was not built once.
 
 **Task 8.** The path can be issued an identity and run.
 
@@ -118,9 +121,10 @@ python3 module7/run.py
 
 ## Discussion
 
-Now break one pillar on purpose and rerun. The runner lists how to break each
-one. Pick identity, remove the workload block, and notice what the failure
-looks like: not an error, just a run you can no longer attribute.
+Break one pillar on purpose and rerun. The runner lists how to break each one.
+If you pick identity and remove the workload block, the credential cannot be
+issued: the substrate raises "no workload identity registered for path …" and
+the checker reports the path missing.
 
 Put it back before you move on.
 

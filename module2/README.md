@@ -1,6 +1,6 @@
 # Module 2: The tooling layer
 
-This module runs for 45 minutes and builds the capability pillar.
+This module builds the capability pillar.
 
 ## Mapping your IDP to the tooling layer
 
@@ -31,7 +31,7 @@ What is new is the governed interface an agent reaches it with.
 ```
 
 One Layer 1 system yields many capabilities, each separately entitled and
-separately tiered. GitHub is one system and at least four grants.
+separately tiered. GitHub is one system that yields at least four grants.
 
 Capability is broader than "Layer 1 with an API". Skills and procedures, MCP
 servers wrapping internal APIs, and agent-to-agent calls are all capability
@@ -52,29 +52,28 @@ grants, and none of them is a Layer 1 system.
 ```
 
 These are self-hosted MCP servers, one per system, behind a gateway you run
-in-cluster. `mcp-gateway.tf` is our gateway in front of our own servers, not a
-vendor subscription.
+in-cluster. `mcp-gateway.tf` configures that gateway and the servers behind
+it, all of which you host yourself.
 
-There is a second gateway later in the course. This one governs what an agent
-can **do**. The model gateway in Module 5 governs what it can **think with**.
-It is the same pattern with a different subject.
+There is a second gateway later in the course. The tool gateway governs what an
+agent can do. The model gateway in Module 5 applies the same pattern to the
+models an agent can use.
 
 ## Tool count and selection accuracy
 
-This is measured, not a preference. Llama 3.1 8B fails a function-calling
-benchmark at 46 tools and passes the same set at 19 (arXiv:2411.15399). That
-is a small model, so read it as the shape rather than the threshold: for
-frontier models the overlap onset is nearer 30, and vendors have converged on
+This effect has been measured. Llama 3.1 8B fails a function-calling
+benchmark at 46 tools and passes the same set at 19 (arXiv:2411.15399). That is
+a small model, so treat the numbers as a trend. For frontier models the overlap onset is nearer 30, and vendors have converged on
 caps of 40 to 50.
 
-There are two causes. Every tool definition sits in the context window at 300 to 600
-tokens each, spent before any work happens. GitHub's MCP server alone is about
-26,000 tokens for 35 tools. And more options mean more chances
-to pick the wrong one.
+There are two causes. First, every tool definition sits in the context window
+at 300 to 600 tokens, spent before any work happens. GitHub's MCP server alone
+is about 26,000 tokens for 35 tools. Second, more options mean more chances to
+pick the wrong one.
 
-So handing an agent everything available makes it worse, not more capable.
-Curation is therefore a platform decision. Left to the path author, the answer is always
-"all of them".
+Handing an agent every available tool makes it worse at its job. That makes
+curation a platform decision, because a path author left to choose will ask
+for all of them.
 
 ## Run it
 
@@ -92,7 +91,7 @@ An on-call engineer wants `/pr-review` to check whether the service under
 review is currently erroring before it comments. That means one new capability:
 `telemetry:query`, backed by Prometheus, which you already run.
 
-Adding it takes five edits in five files. That is the lesson.
+Adding it takes five edits in five files.
 
 ```
    1. tool-registry.yaml     does the operation exist at all
@@ -110,11 +109,11 @@ machine can act on.
 
 **Task 3.** Enable the `prometheus` server in `enabled_servers` in
 `config/mcp-gateway.tf`. Until you do, the registry knows the operation and the
-gateway still refuses it. Two doors, both must be open.
+gateway still refuses it. Both have to allow the call.
 
 **Task 4.** Give it a tier in `config/permission-tiers.yaml`. Reading telemetry
 is not the same risk as merging. Anything unlisted classifies dangerous by
-omission, so leaving it out is a decision too.
+omission, so leaving it out also sets its tier.
 
 **Task 5.** Add it to the pre-provisioned identity in `config/spiffe-ids.yaml`.
 That identity ships with the repo so you can scope an entitlement before Module
@@ -131,9 +130,8 @@ python3 module2/run.py
 
 After the check passes, look at the token cost line in `run.py` output. You
 added the `token_cost` you chose to the context every run now pays, whether or
-not the tool is used. Read the before and after totals, not the delta: the
-entitled set moves from roughly 740 tokens to over a thousand for one
-read-only tool. Curation has a price on both sides.
+not the tool is used. Compare the before and after totals: the entitled set
+moves from roughly 740 tokens to over a thousand for one read-only tool.
 
 ## Done when
 

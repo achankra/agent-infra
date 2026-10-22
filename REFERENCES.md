@@ -1,7 +1,7 @@
 # References
 
-Where each pillar's design came from. Chapter-level, so you can go to the
-long version.
+Where each pillar's design came from. Book citations give the chapter, so you
+can read the full treatment.
 
 ## Governance
 
@@ -25,7 +25,7 @@ Audit and attribution: *Effective Platform Engineering*, Ch 5.
 
 ## Harness
 
-Capability as governed exposure rather than system access. *Effective Platform
+Capability as the governed exposure of a system to an agent. *Effective Platform
 Engineering*, Ch 4: infrastructure is provisioned by the platform on the team's
 behalf rather than by granting the team permissions to do it themselves. The
 same rule, with an agent in the team's place, is `config/entitlement-map.yaml`.
@@ -47,8 +47,8 @@ Confidence gating ahead of autonomous execution: same chapter.
 Harness variance against model variance, and the 68% / 34% figure for one
 model across two harnesses: arXiv:2605.23950.
 
-Tool count and selection accuracy: arXiv:2411.15399. Note the scope, which is
-a quantized 8B model on edge hardware, not a frontier model.
+Tool count and selection accuracy: arXiv:2411.15399. The study covers a
+quantized 8B model on edge hardware.
 
 Position of a fact within the context window: arXiv:2307.03172.
 
