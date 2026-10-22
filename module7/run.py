@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.lab import bullet, dashboard_note, header, kv, section  # noqa: E402
+from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate.observability import Observability  # noqa: E402
 from substrate.paths import pr_review, validate_change  # noqa: E402
 
@@ -77,12 +77,12 @@ def main() -> int:
     for pillar, how in BREAKS.items():
         kv(pillar, how)
     bullet("")
-    bullet("Identity is the one worth naming: its failure produces no")
-    bullet("postmortem, because the failure is the inability to attribute.")
+    bullet("Remove an identity and the credential cannot be issued, so the")
+    bullet("path stops with an error. A platform that let the agent fall back")
+    bullet("to a shared account would keep running, and nobody could say who acted.")
 
     obs.flush()
     print("\n" + obs.summary())
-    dashboard_note()
     return 0
 
 
