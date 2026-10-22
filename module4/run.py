@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.lab import bullet, dashboard_note, header, kv, section  # noqa: E402
+from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate.context import ContextAssembler  # noqa: E402
 from substrate.observability import Observability  # noqa: E402
 from substrate.policy import PolicyEngine  # noqa: E402
@@ -79,7 +79,6 @@ def main() -> int:
         bullet("screening, its contents become instructions.")
 
     obs.flush()
-    dashboard_note()
     return 0
 
 

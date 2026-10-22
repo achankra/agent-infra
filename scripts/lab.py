@@ -54,7 +54,3 @@ def kv(k: str, v) -> None:
 def bullet(text: str) -> None:
     print(f"      {text}")
 
-
-def dashboard_note() -> None:
-    print(f"\n  {DIM}Metrics written to .state/metrics.prom. "
-          f"If the stack is up, refresh Grafana.{RESET}\n")

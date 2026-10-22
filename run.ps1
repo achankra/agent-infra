@@ -1,5 +1,5 @@
-# Brings the stack up. Windows PowerShell.
-param([string]$Command = "up")
+# Setup, check and reset for the labs. Windows PowerShell.
+param([string]$Command = "setup")
 
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
@@ -11,9 +11,7 @@ $py = if (Get-Command python -ErrorAction SilentlyContinue) { "python" } else { 
 if ($LASTEXITCODE -ne 0) { & $py -m pip install -r requirements.txt }
 
 switch ($Command) {
-  "up" {
-    Write-Host "starting metrics server on http://127.0.0.1:8080/metrics"
-    Start-Process -NoNewWindow $py "-m","substrate.metrics_server"
+  "setup" {
     Write-Host ""
     Write-Host "run a module:    $py module1\run.py"
     Write-Host "check your work: $py module1\check.py"
@@ -27,6 +25,5 @@ switch ($Command) {
     exit $fail
   }
   "reset" { & $py scripts\reset.py }
-  "down"  { Get-Process $py -ErrorAction SilentlyContinue | Stop-Process -Force }
-  default { Write-Host "usage: .\run.ps1 [up|check|reset|down]"; exit 1 }
+  default { Write-Host "usage: .\run.ps1 [setup|check|reset]"; exit 1 }
 }

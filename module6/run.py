@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.lab import bullet, dashboard_note, header, kv, section  # noqa: E402
+from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate import config  # noqa: E402
 from substrate.evaluation import Evaluator  # noqa: E402
 from substrate.observability import Observability  # noqa: E402
@@ -76,7 +76,6 @@ def main() -> int:
     kv("action", f"{res.action}  {res.reason}")
 
     obs.flush()
-    dashboard_note()
     section("Operating metrics, once the gates pass")
     bullet("Gates say whether this artifact ships. These say whether the path works.")
     slos = config.load_yaml("agent-slos.yaml").get("metrics", {})

@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.lab import bullet, dashboard_note, header, kv, section  # noqa: E402
+from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate.models import ModelGateway, ModelError  # noqa: E402
 from substrate.observability import Observability  # noqa: E402
 from substrate.orchestrator import Orchestrator  # noqa: E402
@@ -94,7 +94,6 @@ def main() -> int:
 
     obs.flush()
     print("\n" + obs.summary())
-    dashboard_note()
     return 0
 
 

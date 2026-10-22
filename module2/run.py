@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.lab import bullet, dashboard_note, header, kv, section  # noqa: E402
+from scripts.lab import bullet, header, kv, section  # noqa: E402
 from substrate import config  # noqa: E402
 from substrate.observability import Observability  # noqa: E402
 from substrate.paths import pr_review  # noqa: E402
@@ -69,7 +69,6 @@ def main() -> int:
     kv("context", f"{res.context_sources} ({res.context_tokens} tokens)")
     obs.flush()
     print("\n" + obs.summary())
-    dashboard_note()
     return 0
 
 

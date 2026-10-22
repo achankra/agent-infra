@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Brings the stack up. Linux and macOS. See run.ps1 for Windows.
+# Setup, check and reset for the labs. Linux and macOS. See run.ps1 for Windows.
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -15,13 +15,10 @@ PYCHECK
 
 "$PY" -c "import yaml" 2>/dev/null || "$PY" -m pip install -r requirements.txt
 
-case "${1:-up}" in
-  up)
-    echo "starting metrics server on http://127.0.0.1:8080/metrics"
-    "$PY" -m substrate.metrics_server &
-    echo $! > .state-pid 2>/dev/null || true
+case "${1:-setup}" in
+  setup)
     echo
-    echo "run a module:   $PY module1/run.py"
+    echo "run a module:    $PY module1/run.py"
     echo "check your work: $PY module1/check.py"
     ;;
   check)
@@ -34,11 +31,6 @@ case "${1:-up}" in
   reset)
     "$PY" scripts/reset.py
     ;;
-  down)
-    [ -f .state-pid ] && kill "$(cat .state-pid)" 2>/dev/null || true
-    rm -f .state-pid
-    echo "stopped"
-    ;;
   *)
-    echo "usage: ./run.sh [up|check|reset|down]"; exit 1;;
+    echo "usage: ./run.sh [setup|check|reset]"; exit 1;;
 esac
