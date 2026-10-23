@@ -63,11 +63,12 @@ AI spend management among FinOps practitioners: State of FinOps 2026.
 
 ## Course context
 
-The paths-to-outcome model and its enterprise extension of identity, policy
-and state: von Grunberg and Galante, *Thinking in Platforms*, Weave
-Intelligence, 2026.
+Core textbook. The paths-to-outcome model and its enterprise extension of
+identity, policy and state: von Grünberg and Galante, *Thinking in Platforms*,
+Weave Intelligence, 2026. The path definition, "a bounded intervention from
+user intent to usable output", is on p. 94.
 
-The four maturity levels taught in Course 2: Galante, von Grunberg, Haigh and
+The four maturity levels taught in Course 2: Galante, von Grünberg, Haigh and
 Chankramath, *The four levels of agentic software development in the
 enterprise*, Weave Intelligence, 2026.
 

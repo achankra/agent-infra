@@ -8,6 +8,20 @@ work in this one repository, and each lab builds on the one before it.
 Every pillar in the course is a config file. No lab asks you to write Python.
 You edit declarative config and watch the behavior change.
 
+## Core textbook
+
+*Thinking in Platforms* by Kaspar von Grünberg and Luca Galante (Weave
+Intelligence, 2026) is the core textbook for this course. The unit every lab
+operates on, the path, comes from it:
+
+> "A path is a bounded intervention from user intent to usable output."
+>
+> von Grünberg and Galante, *Thinking in Platforms*, p. 94
+
+The book also sets out what an enterprise adds to a path: identity, policy and
+state. This repo builds those once, as the substrate every path runs on, and
+each path declares the rest.
+
 ## What you build
 
 ```
