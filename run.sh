@@ -19,11 +19,11 @@ case "${1:-setup}" in
   setup)
     echo
     echo "run a module:    $PY module1/run.py"
-    echo "check a lab:     $PY module2/check.py   (modules 2 to 8)"
+    echo "check your work: $PY module1/check.py"
     ;;
   check)
     fail=0
-    for m in 2 3 4 5 6 7 8; do
+    for m in 1 2 3 4 5 6 7 8; do
       "$PY" "module$m/check.py" || fail=1
     done
     exit $fail
